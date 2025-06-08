@@ -43,6 +43,7 @@ body{
 }
 header{
     /*background-image: url('../img/Captura\ de\ pantalla\ \(2998\).png');*/
+    background-image: url('../img/imagenPortada1.png');
     height: 750px;
     background-repeat: no-repeat;
     background-position: center;
