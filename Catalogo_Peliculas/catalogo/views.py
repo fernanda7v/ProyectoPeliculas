@@ -5,4 +5,4 @@ from django.views.generic import TemplateView
 
 
 def home(request):
-    return render(request,'catalogo/principal.html')
+    return render(request,'catalogo/home.html')
