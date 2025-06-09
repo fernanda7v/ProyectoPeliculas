@@ -266,3 +266,26 @@ th {
     background-color: #004080;
     color: white;
 }
+
+
+.peliculas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.pelicula {
+    width: 200px;
+    text-align: center;
+}
+.pelicula img {
+    width: 100%;
+    border-radius: 10px;
+}
+.paginacion a {
+    margin: 10px;
+    padding: 5px 10px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}

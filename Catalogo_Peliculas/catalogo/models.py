@@ -5,13 +5,11 @@ class Actor(models.Model):
     nombre=models.CharField(max_length=100)
     def __str__(self):
         return self.nombre
+    
 class Genero(models.Model):
     nombre = models.CharField(max_length=100)
     def __str__(self):
         return self.nombre
-
-
-
 
 class Pelicula(models.Model):
     titulo=models.CharField(max_length=100)
@@ -29,6 +27,7 @@ class Pelicula(models.Model):
             return total/valoraciones.count()
         else:
             return 0
+        
 class Valoracion(models.Model):
     pelicula=models.ForeignKey('Pelicula',on_delete=models.CASCADE,related_name='valoraciones')
     puntuacion=models.IntegerField()
