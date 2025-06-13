@@ -3,18 +3,12 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView
 import requests
 
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import redirect
 
 
-
-# Create your views here.
-
-#from django.http import HttpResponse
-
-#def index(request):
-#    return HttpResponse("¡Bienvenido al Catálogo de Películas!")
 def home(request):
     return render(request,'catalogo/home.html')
-
 
 
 API_KEY = 'a4f7ad9c1fb770bf24d2e49fe4c826b5'
@@ -37,3 +31,13 @@ def home2(request):
         print(f"Error en la API de TMDB: {e}")
 
     return render(request, "catalogo/home2.html", {"peliculas": peliculas, "genero": genero, "pagina": pagina})
+
+def registrar_usuario(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')  # Asegúrate de tener la URL 'login'
+    else:
+        form = UserCreationForm()
+    return render(request, 'catalogo/registro.html', {'form': form})

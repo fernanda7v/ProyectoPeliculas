@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Actor(models.Model):
@@ -27,7 +28,17 @@ class Pelicula(models.Model):
             return total/valoraciones.count()
         else:
             return 0
-        
+
+class Favorito(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favoritos')
+    pelicula = models.ForeignKey(Pelicula, on_delete=models.CASCADE, related_name='favorita_de')
+
+    class Meta:
+        unique_together = ('usuario', 'pelicula')  # Evita duplicados
+
+    def __str__(self):
+        return f"{self.usuario.username} - {self.pelicula.titulo}"
+
 class Valoracion(models.Model):
     pelicula=models.ForeignKey('Pelicula',on_delete=models.CASCADE,related_name='valoraciones')
     puntuacion=models.IntegerField()
