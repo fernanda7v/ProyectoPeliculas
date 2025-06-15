@@ -1,25 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<section>
-    <h2>Películas por Género</h2>
+<section class="peliculas1">
+    <h2 class="pelicula-titulo">Películas por Género</h2>
     <form method="GET">
-        <label for="genero">Selecciona un género:</label>
-        <select name="genero" id="genero">
-            <option value="28">Acción</option>
-            <option value="35">Comedia</option>
-            <option value="18">Drama</option>
-            <option value="27">Terror</option>
-        </select>
-        <button type="submit">Filtrar</button>
+        <div class="genero-filtro">  
+            <label for="genero" class="selecciona">Selecciona un género:</label>
+        
+            <select name="genero" id="genero">
+                <option value="28">Acción</option>
+                <option value="35">Comedia</option>
+                <option value="18">Drama</option>
+                <option value="27">Terror</option>
+            </select>
+            <button type="submit" class="button">Filtrar</button>
+        </div>
     </form>
 
     <div class="peliculas">
         {% for pelicula in peliculas %}
             <div class="pelicula">
                 <img src="https://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}" alt="{{ pelicula.title }}">
-                <h3>{{ pelicula.title }}</h3>
-                <p>{{ pelicula.overview }}</p>
+                <h3 class="pelicula-subtitulos">{{ pelicula.title }}</h3>
+                <p class="pelicula-comentarios">{{ pelicula.overview }}</p>
             </div>
         {% endfor %}
     </div>

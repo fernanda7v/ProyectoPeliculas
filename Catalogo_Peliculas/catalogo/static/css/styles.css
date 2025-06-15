@@ -240,14 +240,7 @@ main .img-actores .nombre-actor{
 
 
 
-footer {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
+
 table {
     width: 100%;
     border-collapse: separate;
@@ -266,26 +259,127 @@ th {
     background-color: #004080;
     color: white;
 }
+/*MAIN SECCION PELICULAS POR GENERO */
+.contenedor{
+    width: 100%;
+    max-width: 1000px;
+    overflow: hidden;
+    margin: auto;
+    max-width: none;
+}
+
+main .peliculas1{
+    background: #000000 ;/*#d2b8f0 */
+    padding: 30px 0;
+}
+main  .pelicula-titulo{
+    font-size: 30px;
+    color: #fff;
+    margin-left: 50px;
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    font-weight: 700;
+    
+}
+main .peliculas1 .selecciona{
+    font-size: 20px;
+    color: #fff;
+    margin-left: 50px;
+}
+main .peliculas1 .button{
+    background: #aa00ff00;
+    display: block;
+    width: 100px;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    padding: 5px;
+    border: 2px solid #7c7c7c ;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #e5e0e9  ;
+    background-color: #1e1e2f;
+}
+.genero-filtro {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    margin-bottom: 20px;
+}
+
+select {
+    padding: 5px;
+    border: 2px solid #d4e4ee;
+    border-radius: 5px;
+    background-color: #1e1e2f; /* fondo personalizado */
+    color: #e5e0e9; 
+    font-size: 14px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    cursor: pointer;
+    background-size: 16px;
+    width: 100px;
+}
+
 
 
 .peliculas {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;/*agregado*/
     gap: 20px;
 }
 .pelicula {
-    width: 200px;
+    width: 250px;/*editado*/
     text-align: center;
+    /*padding: 30px 0;*/
 }
 .pelicula img {
     width: 100%;
     border-radius: 10px;
 }
+/*PELICULA TITULOS*/
+.pelicula .pelicula-subtitulos{
+    padding: 10px 0;
+    color: #fff;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.pelicula .pelicula-comentarios{
+    color: #fff;
+    font-size: 13px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: justify;
+}
+
+.paginacion{
+    /*margin-left: 80px;*/
+    text-align: center;
+}
 .paginacion a {
     margin: 10px;
     padding: 5px 10px;
-    background: #007bff;
+    background: #1e1e2f;
     color: white;
     text-decoration: none;
     border-radius: 5px;
+    border: 2px solid #d4e4ee ;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
 }
+
+
+
+/*FOOTER */
+footer {
+    background-color: #1c1c1c;
+    color: white;
+    padding: 20px;
+    /*position: fixed;*/
+    bottom: 0;
+    width: 100%;
+}
+footer .texto-footer{
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
