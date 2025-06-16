@@ -2,16 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 import requests
-
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect , get_object_or_404
-
 from django.contrib.auth.decorators import login_required
 from .models import Pelicula, Favorito, Genero
 
 def home(request):
     return render(request,'catalogo/home.html')
-
 
 API_KEY = 'a4f7ad9c1fb770bf24d2e49fe4c826b5'
 BASE_URL = "https://api.themoviedb.org/3/discover/movie"
@@ -46,28 +43,30 @@ def registrar_usuario(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')  # Asegúrate de tener la URL 'login'
+            return redirect('login') 
     else:
         form = UserCreationForm()
     return render(request, 'catalogo/registro.html', {'form': form})
 
 def agregar_favorito(request, pelicula_id):
     if request.method == "POST":
-        # Buscar si ya existe la película
         pelicula = Pelicula.objects.filter(id=pelicula_id).first()
-
-        # Si no existe, obtenemos datos desde TMDB
         if not pelicula:
             url = f"https://api.themoviedb.org/3/movie/{pelicula_id}?api_key={API_KEY}&language=es-ES"
             response = requests.get(url)
             if response.status_code == 200:
                 data = response.json()
-                # Puedes mejorar esto extrayendo el género correctamente
                 genero, _ = Genero.objects.get_or_create(nombre="Sin género")
                 pelicula = Pelicula.objects.create(titulo=data['title'], genero=genero)
-                # No agregamos actores en este punto
-
-        # Ahora sí, crear favorito si no existe
         Favorito.objects.get_or_create(usuario=request.user, pelicula=pelicula)
 
     return redirect('home2')
+
+def mis_favoritos(request):
+    favoritos = Favorito.objects.filter(usuario=request.user).select_related('pelicula')
+    peliculas = [f.pelicula for f in favoritos]
+
+    return render(request, 'catalogo/mis_favoritos.html', {
+        'peliculas': peliculas,
+        'favoritos_ids': [p.id for p in peliculas],
+    })

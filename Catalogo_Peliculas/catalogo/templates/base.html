@@ -18,13 +18,14 @@
             <div class="contenedor">
                 <nav class="barra">
                     <a href="{% url 'home2' %}">INICIO</a>
-                    <a href="{% url 'registro' %}">REGISTRARSE</a>
-                    <!-- <a href="{% url 'login' %}">LOG IN</a>
-                    <a href="{% url 'logout' %}">LOG OUT</a> -->
                     <div style="position: absolute; top: 10px; right: 10px;">
                         {% if user.is_authenticated %}
                             <span>Hola, {{ user.username }} | </span>
-                            <a href="{% url 'logout' %}">Cerrar sesión</a>
+                            <a href="{% url 'mis_favoritos' %}">Mis Favoritos</a> |
+                            <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit">Cerrar sesión</button>
+                            </form>
                         {% else %}
                             <a href="{% url 'login' %}">Iniciar sesión</a> |
                             <a href="{% url 'registro' %}">Registrarse</a>
