@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Iniciar Sesión</h2>
-<form method="POST">
+<form method="POST" action="{% url 'login' %}?next={% url 'home2' %}">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Ingresar</button>
