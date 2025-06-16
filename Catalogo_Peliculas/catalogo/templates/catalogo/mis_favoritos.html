@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <h2>Mis Películas Favoritas</h2>
+
+    {% if peliculas %}
+        <div class="peliculas">
+            {% for pelicula in peliculas %}
+                <div class="pelicula">
+                    <h3>{{ pelicula.titulo }}</h3>
+                    <p>✅ Ya es tu favorita</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No tienes películas favoritas aún.</p>
+    {% endif %}
+</section>
+{% endblock %}

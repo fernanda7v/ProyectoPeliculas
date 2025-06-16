@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="peliculas1">
+    <h2 class="pelicula-titulo">Películas por Género</h2>
+    <form method="GET">
+        <label for="genero">Selecciona un género:</label>
+        <select name="genero" id="genero">
+            <option value="28" {% if genero == "28" %}selected{% endif %}>Acción</option>
+            <option value="35" {% if genero == "35" %}selected{% endif %}>Comedia</option>
+            <option value="18" {% if genero == "18" %}selected{% endif %}>Drama</option>
+            <option value="27" {% if genero == "27" %}selected{% endif %}>Terror</option>
+        </select>
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <div class="peliculas">
+        {% for pelicula in peliculas %}
+            <div class="pelicula">
+                <img src="https://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}" alt="{{ pelicula.title }}">
+                <h3 class="pelicula-subtitulos">{{ pelicula.title }}</h3>
+                <p class="pelicula-comentarios">{{ pelicula.overview }}</p>
+
+                {% if user.is_authenticated %}
+                    {% if pelicula.id in favoritos_ids %}
+                        <p>✅ Ya es tu favorita</p>
+                    {% else %}
+                        <form action="{% url 'agregar_favorito' pelicula.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Agregar a Favoritos</button>
+                        </form>
+                    {% endif %}
+                {% else %}
+                    <p><a href="{% url 'login' %}">Inicia sesión</a> o 
+                    <a href="{% url 'registro' %}">regístrate</a> para agregar a favoritos</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="paginacion">
+        {% if pagina|add:'-1' > 0 %}
+            <a href="?genero={{ genero }}&pagina={{ pagina|add:'-1' }}">Anterior</a>
+        {% endif %}
+        <a href="?genero={{ genero }}&pagina={{ pagina|add:'1' }}">Siguiente</a>
+    </div>
+</section>
+{% endblock %}
