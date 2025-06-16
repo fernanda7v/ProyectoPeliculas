@@ -16,18 +16,16 @@ class Pelicula(models.Model):
     titulo=models.CharField(max_length=100)
     genero=models.ForeignKey('Genero',on_delete=models.CASCADE)#on_delete es para borrar un genero y tambien hace referencia ala clase Genero creada
     actores=models.ManyToManyField(Actor)#ManyTooManyfield el actor puede estar en una o muchas peliculas o tener una pelicula muchos actores
+    favoritos = models.ManyToManyField(User, related_name='peliculas_favoritas', blank=True)
 
     def __str__(self):
         return self.titulo
     def promedio_de_valoraciones(self):
-        valoraciones=self.valoraciones.all()
+        valoraciones = self.valoraciones.all()
         if valoraciones.exists():
-            total=0
-            for x in valoraciones:
-                total+=x.puntuacion
-            return total/valoraciones.count()
-        else:
-            return 0
+            total = sum([v.puntuacion for v in valoraciones])
+            return total / valoraciones.count()
+        return 0
 
 class Favorito(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favoritos')
