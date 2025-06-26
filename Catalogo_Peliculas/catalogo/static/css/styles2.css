@@ -1,0 +1,234 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: #1f1f1f;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.barra a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.barra a:hover {
+    color: #00bcd4;
+}
+
+.title-header {
+    font-size: 2.5rem;
+    margin-top: 20px;
+}
+
+.texto-header {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+section.peliculas1 {
+    padding: 20px;
+}
+
+form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+select, button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    background-color: #333;
+    color: white;
+}
+
+button:hover {
+    background-color: #00bcd4;
+    color: #000;
+}
+
+.peliculas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pelicula {
+    position: relative;
+    width: 250px;
+    overflow: hidden;
+    background-color: #2a2a2a;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease;
+}
+
+.pelicula:hover {
+    transform: scale(1.03);
+}
+
+.pelicula img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.pelicula-subtitulos {
+    margin: 10px 0;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Oculta la descripción al inicio */
+.pelicula-comentarios {
+    color: #ccc;
+    font-size: 14px;
+    margin-top: 10px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+/* Al hacer hover en la tarjeta, mostrar descripción */
+.pelicula:hover .pelicula-comentarios {
+    max-height: 200px; /* puedes ajustar esto si hay descripciones largas */
+    opacity: 1;
+}
+
+.pelicula form {
+    text-align: center;
+    padding: 10px;
+}
+
+.pelicula button {
+    background-color: #00bcd4;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.pelicula button:hover {
+    background-color: #03a9f4;
+}
+
+.paginacion {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.paginacion a {
+    padding: 10px 15px;
+    margin: 0 10px;
+    background-color: #00bcd4;
+    color: #000;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.paginacion a:hover {
+    background-color: #03a9f4;
+}
+
+.texto-footer {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-top: 20px;
+}
+
+/* Extra: login/registro buttons */
+form button[type="submit"] {
+    background-color: #00bcd4;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+    background-color: #03a9f4;
+}
+
+/* Scrollbar (optional, aesthetic) */
+.pelicula-comentarios::-webkit-scrollbar {
+    width: 6px;
+}
+
+.pelicula-comentarios::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+}
+
+/* === Formularios de Login y Registro ===
+form {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #1f1f1f;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2e2e2e;
+    color: white;
+}
+
+form input:focus {
+    outline: 2px solid #00bcd4;
+    background-color: #3a3a3a;
+}
+
+form button[type="submit"] {
+    width: 100%;
+    background-color: #00bcd4;
+    color: #000;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button[type="submit"]:hover {
+    background-color: #03a9f4;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 30px;
+    color: white;
+} */
