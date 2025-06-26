@@ -30,6 +30,7 @@ def home2(request):
     favoritos_ids = []
     if request.user.is_authenticated:
         favoritos_ids = request.user.favoritos.values_list('pelicula__id', flat=True)
+        print(f"IDs de favoritos del usuario: {favoritos_ids}")
 
     return render(request, "catalogo/home2.html", {
         "peliculas": peliculas,

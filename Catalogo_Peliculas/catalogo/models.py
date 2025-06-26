@@ -14,8 +14,8 @@ class Genero(models.Model):
 
 class Pelicula(models.Model):
     titulo=models.CharField(max_length=100)
-    genero=models.ForeignKey('Genero',on_delete=models.CASCADE)#on_delete es para borrar un genero y tambien hace referencia ala clase Genero creada
-    actores=models.ManyToManyField(Actor)#ManyTooManyfield el actor puede estar en una o muchas peliculas o tener una pelicula muchos actores
+    genero=models.ForeignKey('Genero',on_delete=models.CASCADE)
+    actores=models.ManyToManyField(Actor)
     favoritos = models.ManyToManyField(User, related_name='peliculas_favoritas', blank=True)
 
     def __str__(self):
